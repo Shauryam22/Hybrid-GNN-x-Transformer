@@ -55,6 +55,7 @@ for epoch in range(epochs):
         optimizer_all.step()
         
         total_loss += loss.item()
+    print(total_loss)
 print("Phase 2: Unfreezing Transformer & Fine-tuning Full Model...")
 
 
@@ -85,6 +86,7 @@ for epoch in range(fine_tune_epochs):
         optimizer_fine.step()
         
         total_loss += loss.item()
+    print(total_loss)
     
   
 acc_full = eval_fusion_ablation(model, val_loader, device, ablate_gat=False)

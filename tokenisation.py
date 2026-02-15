@@ -12,14 +12,14 @@ PUNCT = r'[!"#$%&()*+,\-./:;<=>?@\[\]^_`{|}~]'
 
 # TOKENISATION for Normal Textual data(# Not code #) 
 
-# def tokenise(text):
-#     text = str(text).lower() # covert into lower
-#     text = re.sub(r'('+PUNCT+r')',r' \1',text) #introducing commas
-#     # betweeen punc char, so that they dont get inc in words
-#     text = re.sub(r'\s+', ' ', text).strip()
-#     text = text.replace(',',"")
-#     text = text.replace('!',"")
-#     text = text.replace('.',"")
-#     text = text.replace('"',"")
-#     # itnroducing space between each commas.
-#     return text.split()
+def tokenise1(text):
+    text = str(text).lower() # covert into lower
+    text = re.sub(r'('+PUNCT+r')',r' \1',text) #introducing commas
+    # betweeen punc char, so that they dont get inc in words
+    text = re.sub(r'\s+', ' ', text).strip()
+    text = text.replace(',',"")
+    text = text.replace('!',"")
+    text = text.replace('.',"")
+    text = text.replace('"',"")
+    # itnroducing space between each commas.
+    return text.split()

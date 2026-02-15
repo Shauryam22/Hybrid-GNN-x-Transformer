@@ -1,23 +1,28 @@
 from sklearn.model_selection import train_test_split
 #from load import load_data
-from tokenisation import tokenise
-from build_vocab import build_vocab
+from tokenisation import tokenise1,tokenise
+from build_vocab import build_vocab1
 from encoding import encode
 import torch
 import pandas as pd
 def load_data(device ='cuda'):
-    df = pd.read_csv("data/cleaned_data_code_ai_human.csv" ,encoding= "utf-8-sig")
+    df = pd.read_csv("C:\\Users\\shaurya\\OneDrive\\Desktop\\VS_Code\\gnn_gpt\\AI_Human.csv",encoding='latin')
     #print(df.head())
-    df = df.sample(frac=1, random_state=23).reset_index(drop=True)
+    df = df.sample(frac=1, random_state=23)
+    #df = df.iloc[:,:2]
+    #df.dropna(inplace=True)
 
-    train_df,val_df = train_test_split(df,test_size=.2)
+    train_df,val_df = train_test_split(df,test_size=.2,train_size=.8,random_state=23)
     return train_df,val_df
-#train_df.shape
+t,v = load_data()
+print(t.head())
 
 def preproc_data(block_size=128,batch_size=64,device='cuda'):
     train_df,val_df = load_data(device)
-    all_tokens = tokenise(text=" ".join(train_df['text'].tolist()))
-    stoi,itos,vocab_size = build_vocab(all_tokens)
+    #all_tokens = tokenise1(text=" ".join(train_df['text'].tolist()))
+    train_df = train_df.dropna(subset=['text'])
+    all_tokens = tokenise1(text=" ".join(train_df['text'].tolist()))
+    stoi,itos,vocab_size = build_vocab1(all_tokens)
     x_train = encode(train_df['text'],stoi,block_size)
     y_train = torch.tensor(train_df['ai'].values,dtype = torch.long)
     x_val = encode(val_df['text'],stoi,block_size)
