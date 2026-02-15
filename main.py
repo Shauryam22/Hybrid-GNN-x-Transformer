@@ -21,8 +21,7 @@ nembed = 64
 model = HumanAIDetector(vocab_size, nembed, adj_sparse).to(device)
 epochs = 50
 
-# 2. DEFINING OPTIMIZERS
-# We will freeze the text encoder partway through
+
 optimizer_all = torch.optim.AdamW(model.parameters(), lr=1e-3)
 
 print("Phase 1: Training GAT Only (Transformer Frozen)...")
@@ -44,8 +43,7 @@ for epoch in range(epochs):
     for xb, yb in train_loader:
         xb, yb = xb.to(device), yb.to(device)
         
-        # FIX: Re-compute the graph inside the loop so a NEW graph is built for every batch
-        # This prevents the "backward through the graph a second time" error.
+        
         model.vocab_emb_cache = model.vocab_gat(model.gat_base_emb.weight, model.adj)
         
         logits = model(xb)
@@ -56,8 +54,6 @@ for epoch in range(epochs):
         optimizer_all.step()
         
         total_loss += loss.item()
-
-# --- START PHASE 2: JOINT FINE-TUNING ---
 print("Phase 2: Unfreezing Transformer & Fine-tuning Full Model...")
 
 
@@ -65,8 +61,7 @@ print("Phase 2: Unfreezing Transformer & Fine-tuning Full Model...")
 for param in model.text_enc.parameters():
     param.requires_grad = True
 
-# 2. Use a smaller learning rate for fine-tuning
-# This is crucial so the Transformer doesn't lose its pre-trained "knowledge"
+
 optimizer_fine = torch.optim.AdamW(model.parameters(), lr=1e-5) 
 
 fine_tune_epochs = 10 
@@ -78,9 +73,7 @@ for epoch in range(fine_tune_epochs):
     for xb, yb in train_loader:
         xb, yb = xb.to(device), yb.to(device)
         
-        # RECTIFICATION: 
-        # Re-compute graph inside the batch loop so gradients can flow 
-        # to the GAT and Transformer simultaneously without a graph-reuse error.
+      
         model.vocab_emb_cache = model.vocab_gat(model.gat_base_emb.weight, model.adj)
         
         logits = model(xb)
