@@ -74,7 +74,8 @@ The model utilizes a dual-branch fusion strategy:
 
 ## 📂 Dataset Format
 Two datasets: 1) Codes,      2) Textual
-For code dataset:
+
+## For code dataset:
 The model requires a CSV file with the following columns:
 * `text`: The raw source code string.
 * `ai`: Binary label (`0` = Human-written, `1` = AI-generated).
