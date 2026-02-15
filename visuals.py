@@ -2,10 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from build_co_occurence import build_coocc
 from load import preproc_data
-from fusion_model import HumanAIDetector
 import torch
-import torch.nn.functional as F
-from metrics import eval_fusion_ablation,print_full_metrics
 device = 'cuda'
 block_size = 128
 batch_size = 64
