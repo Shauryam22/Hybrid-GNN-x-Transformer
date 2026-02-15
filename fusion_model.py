@@ -11,7 +11,7 @@ class HumanAIDetector(nn.Module):
         self.vocab_gat = VocabGAT(emb_dim)
         self.adj = adj_sparse
         
-        # ARCHITECTURAL FIX: Adaptive Gate
+        # Adaptive Gate
         # This allows the model to decide the importance of each branch
         self.gate = nn.Parameter(torch.tensor([0.5])) 
         
@@ -34,10 +34,9 @@ class HumanAIDetector(nn.Module):
         else:
             g_struct = torch.zeros_like(x_seq)
             
-        # C. Architectural Fusion logic
+        
         if mode == "transformer_only":
-            # Pass through fusion with zeros to maintain layer dimensions 
-            # but we use a specialized mask
+           
             combined = torch.cat([x_seq, torch.zeros_like(g_struct)], dim=-1)
         elif mode == "gat_only":
             combined = torch.cat([torch.zeros_like(x_seq), g_struct], dim=-1)
