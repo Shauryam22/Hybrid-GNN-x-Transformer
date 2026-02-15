@@ -2,6 +2,7 @@
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-v2.0+-EE4C2C?style=for-the-badge&logo=pytorch)
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue?style=for-the-badge)
+
 "This model utilizes the Graph Attention Network architecture proposed by Velickovic et al. (2018) and the standard Transformer Encoder architecture (Vaswani et al., 2017)."
 
 A hybrid deep learning architecture that detects AI-generated code by analyzing both **sequential logic** (Transformer) and **structural syntax patterns** (Graph Attention Network).
