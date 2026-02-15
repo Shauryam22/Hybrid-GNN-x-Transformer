@@ -45,6 +45,10 @@ Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-v
 * **Low False Negative Rate:** Only 21 out of 361 AI samples slipped through undetected.
 * **High Fidelity:** The model correctly identified 96.5% of human code, minimizing frustration for developers.
 
+  ## Token-Token Connections or Co-occurences:
+  <img width="1536" height="754" alt="word_conn" src="https://github.com/user-attachments/assets/6c06f8d9-cec8-4e8f-bd7f-b79fc43b5b2d" />
+ 
+
 ---
 
 ---
