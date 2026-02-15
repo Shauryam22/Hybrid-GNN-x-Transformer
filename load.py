@@ -34,4 +34,4 @@ def preproc_data(block_size=128,batch_size=64,device='cuda'):
     val_loader = DataLoader(val_dataset,batch_size=batch_size,shuffle=True) #  no shuff
     # making data according to our (batch_size,block_size)
 
-    return vocab_size,train_dataset,val_dataset,train_loader,val_loader
+    return vocab_size,itos,train_dataset,val_dataset,train_loader,val_loader

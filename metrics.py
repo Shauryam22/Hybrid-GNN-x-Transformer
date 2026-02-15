@@ -1,4 +1,7 @@
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+import torch
+
+
 
 def print_full_metrics(model, loader, device):
     model.eval()
@@ -36,5 +39,40 @@ def print_full_metrics(model, loader, device):
     
     return accuracy_score(all_labels, all_preds)
 
-# Run it
-print_full_metrics(model, val_loader, device)
+def eval_fusion_ablation(model, val_loader, device, ablate_gat=False):
+    model.eval()
+    correct, total = 0, 0
+    
+    with torch.no_grad():
+        for xv, yv in val_loader:
+            xv, yv = xv.to(device), yv.to(device)
+            
+            # 1. Get Transformer Features manually
+            x_seq = model.text_enc(xv)
+            
+            # 2. Get GAT Features manually
+            if model.vocab_emb_cache is not None:
+                g_struct = torch.nn.functional.embedding(xv, model.vocab_emb_cache)
+            else:
+                g_struct = torch.zeros_like(x_seq)
+            
+            # 3. ABLATION LOGIC: If we want to test "Transformer Only", 
+            # we force the GAT features to be zeros.
+            if ablate_gat:
+                g_struct = torch.zeros_like(g_struct)
+                
+            # 4. Manual Fusion (Concatenate)
+            combined = torch.cat([x_seq, g_struct], dim=-1)
+            x_fused = torch.nn.functional.relu(model.fusion_layer(combined))
+            
+            # 5. Pooling & Classify
+            mask = (xv != 0).unsqueeze(-1)
+            x_pooled = (x_fused * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1)
+            logits = model.classifier(x_pooled)
+            
+            preds = torch.argmax(logits, dim=1)
+            correct += (preds == yv).sum().item()
+            total += yv.size(0)
+            
+    return correct / total
+
