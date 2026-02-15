@@ -1,7 +1,8 @@
-# CodeOrigin-GAT: Structural Graph-Transformer for AI Code Detection
+# Hybrid-GNNxTranformer: Structural Graph-Transformer for AI Code Detection
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-v2.0+-EE4C2C?style=for-the-badge&logo=pytorch)
 ![Status](https://img.shields.io/badge/Status-Research_Prototype-blue?style=for-the-badge)
+"This model utilizes the Graph Attention Network architecture proposed by Velickovic et al. (2018) and the standard Transformer Encoder architecture (Vaswani et al., 2017)."
 
 A hybrid deep learning architecture that detects AI-generated code by analyzing both **sequential logic** (Transformer) and **structural syntax patterns** (Graph Attention Network).
 Currently on a very small dataset.
@@ -12,7 +13,7 @@ Process:
 4) Then we make another module for Transformer alone, and we run validation tests on both GAT+Transformer and Transformer alone for the same epochs.
 5) We observe that GAT+Transformer shows better accuracy on validation tests on the same number of epochs.
 
-Unlike standard text classifiers, CodeOrigin-GAT constructs a **Global Co-occurrence Graph** of the code vocabulary, allowing it to "see" the shape of programming syntax, not just the order of words.
+Unlike standard text classifiers, Hybrid-GNNxTransformer constructs a **Global Co-occurrence Graph** of the code vocabulary, allowing it to "see" the shape of programming syntax, not just the order of words.
 
 ---
 
@@ -20,7 +21,7 @@ Unlike standard text classifiers, CodeOrigin-GAT constructs a **Global Co-occurr
 
 Our experiments demonstrate that treating code purely as text (Transformer only) is insufficient for distinguishing subtle AI patterns. Injecting structural graph knowledge yields a **~19.5% performance boost**.
 
-Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text
+Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text(IN BIG DATA BRANCH).
 | Model Architecture | Accuracy | Insight |
 | :--- | :--- | :--- |
 | **Transformer Only** (Ablated) | 37.03% | *Failed to learn meaningful patterns* |
@@ -88,6 +89,6 @@ The model requires a CSV file with the following columns:
 
 ### 1. Installation
 ```bash
-git clone [https://github.com/yourusername/CodeOrigin-GAT.git](https://github.com/yourusername/CodeOrigin-GAT.git)
-cd CodeOrigin-GAT
+git clone https://github.com/Shauryam22/Hybrid-GNN-x-Transformer.git
+cd Hybrid-GNN-x-Transformer
 pip install torch pandas scikit-learn networkx matplotlib
