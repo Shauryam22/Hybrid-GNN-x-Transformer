@@ -4,10 +4,11 @@ from fusion_model import HumanAIDetector
 import torch
 import torch.nn.functional as F
 from metrics import eval_fusion_ablation,print_full_metrics
+path = input("enter your dataset path: ")
 device = 'cuda'
 block_size = 128
 batch_size = 64
-vocab_size,itos,train_dataset,val_dataset,train_loader,val_loader = preproc_data(block_size,batch_size,device)
+vocab_size,itos,train_dataset,val_dataset,train_loader,val_loader = preproc_data(path,block_size,batch_size,device)
 
 adj_dense = build_coocc(train_dataset,vocab_size=vocab_size,window=5)
 indices=(adj_dense>0).nonzero(as_tuple = False).t()  # storing the elements index as tuple hence (_,2)
