@@ -25,6 +25,9 @@ Our experiments demonstrate that treating code purely as text (Transformer only)
 Analysis from a code dataset: https://raw.githubusercontent.com/Shauryam22/Hybrid-GNN-x-Transformer/refs/heads/main/data/cleaned_data_code_ai_human.csv (IN MAIN BRANCH).
 
 Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text (IN BIG DATA BRANCH).
+
+Below Analysis done on ai vs human text data (From Kaggle):
+
 | Model Architecture | Accuracy | Insight |
 | :--- | :--- | :--- |
 | **Transformer Only** (Ablated) | 37.03% | *Failed to learn meaningful patterns* |
