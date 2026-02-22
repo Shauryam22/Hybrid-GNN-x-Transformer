@@ -23,6 +23,7 @@ Unlike standard text classifiers, Hybrid-GNNxTransformer constructs a **Global C
 Our experiments demonstrate that treating code purely as text (Transformer only) is insufficient for distinguishing subtle AI patterns. Injecting structural graph knowledge yields a **~19.5% performance boost**.
 
 Analysis from a code dataset: https://raw.githubusercontent.com/Shauryam22/Hybrid-GNN-x-Transformer/refs/heads/main/data/cleaned_data_code_ai_human.csv (IN MAIN BRANCH).
+
 Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text (IN BIG DATA BRANCH).
 | Model Architecture | Accuracy | Insight |
 | :--- | :--- | :--- |
