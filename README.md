@@ -7,7 +7,8 @@
 
 A hybrid deep learning architecture that detects AI-generated code by analyzing both **sequential logic** (Transformer) and **structural syntax patterns** (Graph Attention Network).
 Currently performed on a kaggle dataset of human vs ai text and an another dataset of ai vs human code.
-Process:
+
+**Process**:
 1) Instead of initiating both Gat and Transformer train together, we freeze Transformer gradients in the initial phase, so that it does not dominate the whole training.
 2) This allows GAT to capture global structural/graphical patterns in the data.
 3) After a few epochs, we unfreeze the Transformer and merge the GAT and Transformer training.
