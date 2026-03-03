@@ -62,6 +62,8 @@ Below Analysis done on ai vs human text code data:
 
 The model utilizes a dual-branch fusion strategy:
 
+<img width="950" height="688" alt="image" src="https://github.com/user-attachments/assets/de9f97f3-92b1-47e2-952d-864cd3ba21e8" />
+
 
 
 [Image of neural network architecture diagram]
