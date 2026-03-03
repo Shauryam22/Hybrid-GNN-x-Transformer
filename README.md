@@ -27,7 +27,7 @@ Analysis from a code dataset: https://raw.githubusercontent.com/Shauryam22/Hybri
 
 Analysis from a Kaggle dataset: https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text (IN BIG DATA BRANCH).
 
-Below Analysis done on ai vs human text data (From Kaggle):
+Below Analysis done on ai vs human text code data:
 
 | Model Architecture | Accuracy | Insight |
 | :--- | :--- | :--- |
