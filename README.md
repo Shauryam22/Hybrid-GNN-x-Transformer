@@ -35,7 +35,6 @@ Below Analysis done on ai vs human text data (From Kaggle):
 | **Hybrid (Transformer + GAT)** | **91.79%** | *Recovered structure & syntax logic* |
 | **Structural Contribution** | **+54.77%** | **The graph is the primary decision maker** |
 
-> **Note:** Final evaluation on the full test set (975 samples) achieved **93.54% Accuracy**.
 ### Classification Report
 | Class | Precision | Recall | F1-Score | Support |
 | :--- | :--- | :--- | :--- | :--- |
