@@ -31,9 +31,9 @@ Below Analysis done on ai vs human text code data:
 
 | Model Architecture | Accuracy | Insight |
 | :--- | :--- | :--- |
-| **Transformer Only** (Ablated) | 37.03% | *Failed to learn meaningful patterns* |
+| **Transformer Only** (Ablated) | 67.03% | *Failed to learn meaningful patterns* |
 | **Hybrid (Transformer + GAT)** | **91.79%** | *Recovered structure & syntax logic* |
-| **Structural Contribution** | **+54.77%** | **The graph is the primary decision maker** |
+| **Structural Contribution** | **+24.77%** | **The graph is the primary decision maker** |
 
 ### Classification Report
 | Class | Precision | Recall | F1-Score | Support |
