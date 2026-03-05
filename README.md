@@ -9,7 +9,7 @@ A hybrid deep learning architecture that detects AI-generated code by analyzing 
 Currently performed on a kaggle dataset of human vs ai text and an another dataset of ai vs human code.
 
 **Process**:
-1) Instead of initiating both Gat and Transformer train together, we freeze Transformer gradients in the initial phase, so that it does not dominate the whole training.
+1) Instead of initiating both Gat and Transformer training together, we freeze Transformer gradients in the initial phase, so that it does not dominate the whole training.
 2) This allows GAT to capture global structural/graphical patterns in the data.
 3) After a few epochs, we unfreeze the Transformer and merge the GAT and Transformer training.
 4) Then we make another module for Transformer alone, and we run validation tests on both GAT+Transformer and Transformer alone for the same epochs.
